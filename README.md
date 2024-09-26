@@ -1,2 +1,2 @@
-# flight-service
+# Flight Service
 An Flight Microservice for CrimsonSky
