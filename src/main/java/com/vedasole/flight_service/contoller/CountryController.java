@@ -17,7 +17,7 @@ public class CountryController {
     private final CountryService countryService;
 
     @PostMapping
-    public ResponseEntity<CountryDto> addCountry(@Valid CountryDto countryDto) {
+    public ResponseEntity<CountryDto> addCountry(@Valid @RequestBody CountryDto countryDto) {
         CountryDto savedCountryDto = countryService.addCountry(countryDto);
         return new ResponseEntity<>(savedCountryDto, HttpStatus.CREATED);
     }
