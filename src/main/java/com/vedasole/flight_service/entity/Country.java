@@ -5,10 +5,14 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -52,4 +56,11 @@ public class Country {
 
     @Pattern(regexp = "^\\d+$", message = "Population should be a valid number")
     private Long population;
+
+    @CreatedDate
+    private LocalDateTime createDt;
+
+    @LastModifiedDate
+    private LocalDateTime updateDt;
+
 }
