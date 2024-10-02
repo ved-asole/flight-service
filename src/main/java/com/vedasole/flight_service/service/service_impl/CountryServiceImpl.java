@@ -33,11 +33,14 @@ public class CountryServiceImpl implements CountryService {
     @Override
     @Transactional
     public CountryDto updateCountry(String countryId, CountryDto countryDto) {
-        Country country = countryRepo.findById(countryId).orElseThrow(
-                () -> new ResourceNotFoundException(CATEGORY_STRING, "id", countryId)
+        Country updatedCountry = countryRepo.findById(countryId).
+                map(country -> {
+                    countryDto.setCreatedDate(country.getCreatedDate());
+                    modelMapper.map(countryDto, country);
+                    return countryRepo.save(country);
+                }).orElseThrow(() -> new ResourceNotFoundException(CATEGORY_STRING, "id", countryId)
         );
-        modelMapper.map(countryDto, country);
-        return convertToDto(countryRepo.save(country));
+        return convertToDto(updatedCountry);
     }
 
     @Override
