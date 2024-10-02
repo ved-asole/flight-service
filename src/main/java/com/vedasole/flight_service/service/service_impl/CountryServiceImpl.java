@@ -1,10 +1,10 @@
 package com.vedasole.flight_service.service.service_impl;
 
 import com.vedasole.flight_service.entity.Country;
+import com.vedasole.flight_service.exception.ResourceNotFoundException;
 import com.vedasole.flight_service.payload.CountryDto;
 import com.vedasole.flight_service.repository.CountryRepo;
 import com.vedasole.flight_service.service.service_interface.CountryService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -21,7 +21,7 @@ public class CountryServiceImpl implements CountryService {
 
     private final CountryRepo countryRepo;
     private final ModelMapper modelMapper;
-    private static final String COUNTRY_NOT_FOUND = "Country not found with id : ";
+    private static final String CATEGORY_STRING = "Country";
 
     @Override
     @Transactional
@@ -34,7 +34,7 @@ public class CountryServiceImpl implements CountryService {
     @Transactional
     public CountryDto updateCountry(String countryId, CountryDto countryDto) {
         Country country = countryRepo.findById(countryId).orElseThrow(
-                () -> new EntityNotFoundException(COUNTRY_NOT_FOUND + countryId)
+                () -> new ResourceNotFoundException(CATEGORY_STRING, "id", countryId)
         );
         modelMapper.map(countryDto, country);
         return convertToDto(countryRepo.save(country));
@@ -47,7 +47,7 @@ public class CountryServiceImpl implements CountryService {
             countryRepo.delete(country);
             return convertToDto(country);
         }).orElseThrow(
-                () -> new EntityNotFoundException(COUNTRY_NOT_FOUND + countryId)
+                () -> new ResourceNotFoundException(CATEGORY_STRING, "id", countryId)
         );
     }
 
@@ -55,15 +55,15 @@ public class CountryServiceImpl implements CountryService {
     @Transactional(readOnly = true)
     public CountryDto getCountryById(String countryId) {
         return countryRepo.findById(countryId).map(this::convertToDto).orElseThrow(
-                () -> new EntityNotFoundException(COUNTRY_NOT_FOUND + countryId)
+                () -> new ResourceNotFoundException(CATEGORY_STRING, "id", countryId)
         );
     }
 
     @Override
     @Transactional(readOnly = true)
     public Page<CountryDto> getAllCountries(int page, int size, String sortBy, String order) {
-        PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(order), sortBy));
-        return countryRepo.findAll(pageRequest).map(this::convertToDto);
+        return countryRepo.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(order), sortBy)))
+                .map(this::convertToDto);
     }
 
     public CountryDto convertToDto(Country country) {
