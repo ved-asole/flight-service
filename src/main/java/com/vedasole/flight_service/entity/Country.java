@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EnableMongoAuditing
 @Document(collection = "countries")
 @CompoundIndex(name = "idx_country_iso2_name", def = "{'countryIso2': 1, 'countryName': 1}", unique = true)
 public class Country {
@@ -58,9 +60,9 @@ public class Country {
     private Long population;
 
     @CreatedDate
-    private LocalDateTime createDt;
+    private LocalDateTime createdDate;
 
     @LastModifiedDate
-    private LocalDateTime updateDt;
+    private LocalDateTime updatedDate;
 
 }

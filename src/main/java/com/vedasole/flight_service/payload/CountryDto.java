@@ -50,8 +50,8 @@ public class CountryDto {
     @Positive
     private Long population;
 
-    private LocalDateTime createdDt;
+    private LocalDateTime createdDate;
 
-    private LocalDateTime updatedDt;
+    private LocalDateTime updatedDate;
 
 }
