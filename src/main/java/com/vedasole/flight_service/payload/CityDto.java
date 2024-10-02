@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CityDto {
 
-    private Long cityId;
+    private String cityId;
 
     private String gmt;
 

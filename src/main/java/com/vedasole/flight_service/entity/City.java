@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 public class City {
 
     @Id
-    private Long cityId;
+    private String cityId;
 
     private String gmt;
 
