@@ -29,7 +29,7 @@ public class CityDto {
     @NotNull
     private String cityName;
 
-    private String geonameId;
+    private Long geonameId;
 
     @NotNull
     private Double latitude;

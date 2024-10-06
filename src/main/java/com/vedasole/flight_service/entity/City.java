@@ -41,7 +41,7 @@ public class City {
     @NotNull
     private String cityName;
 
-    private String geonameId;
+    private Long geonameId;
 
     private Double latitude;
 
