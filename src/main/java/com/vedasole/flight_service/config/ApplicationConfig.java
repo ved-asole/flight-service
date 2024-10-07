@@ -1,4 +1,4 @@
-package com.vedasole.flight_service.util;
+package com.vedasole.flight_service.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -13,4 +13,5 @@ public class ApplicationConfig {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 }
