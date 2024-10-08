@@ -25,7 +25,7 @@ public class CountryController {
     @PutMapping("/{countryId}")
     public ResponseEntity<CountryDto> updateCountry(
             @PathVariable String countryId,
-            @Valid CountryDto countryDto
+            @Valid @RequestBody CountryDto countryDto
     ) {
         CountryDto updatedCountryDto = countryService.updateCountry(countryId, countryDto);
         return new ResponseEntity<>(updatedCountryDto, HttpStatus.OK);
