@@ -67,4 +67,19 @@ public class Country {
     @LastModifiedDate
     private LocalDateTime updatedDate;
 
+    // Constructor for testing purposes with no createdDate and updatedDate
+    public Country(String countryId, String capital, String currencyCode, String fipsCode, String countryIso2, String countryIso3, String continent, String countryName, String currencyName, String countryIsoNumeric, String phonePrefix, Long population) {
+        this.countryId = countryId;
+        this.capital = capital;
+        this.currencyCode = currencyCode;
+        this.fipsCode = fipsCode;
+        this.countryIso2 = countryIso2;
+        this.countryIso3 = countryIso3;
+        this.continent = continent;
+        this.countryName = countryName;
+        this.currencyName = currencyName;
+        this.countryIsoNumeric = countryIsoNumeric;
+        this.phonePrefix = phonePrefix;
+        this.population = population;
+    }
 }
