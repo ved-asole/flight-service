@@ -11,4 +11,8 @@ public interface CountryRepo extends MongoRepository<Country, String> {
 
     boolean existsByCountryIso2(String countryIso2);
 
+    long countByCountryNameAndCountryIdNot(String countryName, String countryId);
+
+    long countByCountryIso2AndCountryIdNot(String countryIso2, String countryId);
+
 }
