@@ -25,7 +25,7 @@ public class CityController {
     @PutMapping("/{cityId}")
     public ResponseEntity<CityDto> updateCountry(
             @PathVariable String cityId,
-            @Valid CityDto cityDto
+            @Valid @RequestBody CityDto cityDto
     ) {
         CityDto updatedCityDto = cityService.updateCity(cityId, cityDto);
         return new ResponseEntity<>(updatedCityDto, HttpStatus.OK);
