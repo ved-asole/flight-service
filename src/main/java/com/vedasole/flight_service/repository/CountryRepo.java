@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CountryRepo extends MongoRepository<Country, String> {
 
+    boolean existsByCountryId(String countryId);
+
     boolean existsByCountryName(String countryName);
 
     boolean existsByCountryIso2(String countryIso2);
