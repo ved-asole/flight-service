@@ -29,10 +29,10 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
+		<connection>scm:git:git://github.com/ved-asole/flight-service.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/ved-asole/flight-service.git</developerConnection>
 		<tag/>
-		<url/>
+		<url>https://github.com/ved-asole/flight-service</url>
 	</scm>
 	<properties>
 		<java.version>21</java.version>
