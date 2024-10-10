@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -16,9 +17,10 @@ import static org.springframework.data.web.config.EnableSpringDataWebSupport.Pag
 @EnableMongoRepositories
 @Slf4j
 @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO)
+@EnableCaching
 public class FlightServiceApplication {
 
-	@Value("${spring.application.name}")
+	@Value("${spring.application.name:flight-service}")
 	private String appName;
 
 	@Value("${project.name:CrimsonSky}")
