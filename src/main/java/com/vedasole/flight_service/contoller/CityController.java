@@ -47,7 +47,7 @@ public class CityController {
     public ResponseEntity<Page<CityDto>> getAllCountries(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "cityId") String sortBy,
+            @RequestParam(defaultValue = "cityName") String sortBy,
             @RequestParam(defaultValue = "asc") String order
     ) {
         return new ResponseEntity<>(cityService.getAllCities(page, size, sortBy, order), HttpStatus.OK);
