@@ -47,7 +47,7 @@ public class CountryController {
     public ResponseEntity<Page<CountryDto>> getAllCountries(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "countryId") String sortBy,
+            @RequestParam(defaultValue = "countryName") String sortBy,
             @RequestParam(defaultValue = "asc") String order
     ) {
         return new ResponseEntity<>(countryService.getAllCountries(page, size, sortBy, order), HttpStatus.OK);
