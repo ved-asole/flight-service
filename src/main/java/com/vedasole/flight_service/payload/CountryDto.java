@@ -45,7 +45,7 @@ public class CountryDto implements Serializable {
     private String currencyName;
 
     @NotNull
-    private String countryIsoNumeric;
+    private Integer countryIsoNumeric;
 
     private String phonePrefix;
 
