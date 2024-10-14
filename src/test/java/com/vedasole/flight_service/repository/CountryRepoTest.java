@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ContextConfiguration;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,12 +28,102 @@ class CountryRepoTest {
     @BeforeEach
     void setUp() {
         log.info("Setting up test data...");
-        Country country1 = new Country("66fcd4647feba23f124549ef", "Andorra la Vella", "EUR", "AN", "AD", "AND", "EU", "Andorra", "Euro", "20", "376", 84000L);
-        Country country2 = new Country("66fcd4647feba23f124549f0", "Abu Dhabi", "AED", "AE", "AE", "ARE", "AS", "United Arab Emirates", "Dirham", "784", "971", 4975593L);
-        Country country3 = new Country("66fcd4647feba23f124549f1", "Kabul", "AFN", "AF", "AF", "AFG", "AS", "Afghanistan", "Afghani", "4", "93", 29121286L);
-        Country country4 = new Country("66fcd4647feba23f124549f2", "St. John's", "XCD", "AC", "AG", "ATG", "NA", "Antigua and Barbuda", "Dollar", "28", "1-268", 86754L);
-        Country country5 = new Country("66fcd4647feba23f124549f3", "The Valley", "XCD", "AV", "AI", "AIA", "NA", "Anguilla", "Dollar", "660", "1-264", 13254L);
-        Country country6 = new Country("66fcd4647feba23f124549f4", "Tirana", "ALL", "AL", "AL", "ALB", "EU", "Albania", "Lek", "8", "355", 2986952L);
+        Country country1 = Country.builder()
+                .countryId("66fcd4647feba23f124549ef")
+                .capital("Andorra la Vella")
+                .currencyCode("EUR")
+                .fipsCode("AN")
+                .countryIso2("AD")
+                .countryIso3("AND")
+                .continent("EU")
+                .countryName("Andorra")
+                .currencyName("Euro")
+                .countryIsoNumeric(20)
+                .phonePrefix("376")
+                .population(84000L)
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
+        Country country2 = Country.builder()
+                .countryId("66fcd4647feba23f124549f0")
+                .capital("Abu Dhabi")
+                .currencyCode("AED")
+                .fipsCode("AE")
+                .countryIso2("AE")
+                .countryIso3("ARE")
+                .continent("AS")
+                .countryName("United Arab Emirates")
+                .currencyName("Dirham")
+                .countryIsoNumeric(784)
+                .phonePrefix("971")
+                .population(4975593L)
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
+        Country country3 = Country.builder()
+                .countryId("66fcd4647feba23f124549f1")
+                .capital("Kabul")
+                .currencyCode("AFN")
+                .fipsCode("AF")
+                .countryIso2("AF")
+                .countryIso3("AFG")
+                .continent("AS")
+                .countryName("Afghanistan")
+                .currencyName("Afghani")
+                .countryIsoNumeric(4)
+                .phonePrefix("93")
+                .population(29121286L)
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
+        Country country4 = Country.builder()
+                .countryId("66fcd4647feba23f124549f2")
+                .capital("St. John's")
+                .currencyCode("XCD")
+                .fipsCode("AC")
+                .countryIso2("AG")
+                .countryIso3("ATG")
+                .continent("NA")
+                .countryName("Antigua and Barbuda")
+                .currencyName("Dollar")
+                .countryIsoNumeric(28)
+                .phonePrefix("1-268")
+                .population(86754L)
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
+        Country country5 = Country.builder()
+                .countryId("66fcd4647feba23f124549f3")
+                .capital("The Valley")
+                .currencyCode("XCD")
+                .fipsCode("AV")
+                .countryIso2("AI")
+                .countryIso3("AIA")
+                .continent("NA")
+                .countryName("Anguilla")
+                .currencyName("Dollar")
+                .countryIsoNumeric(660)
+                .phonePrefix("1-264")
+                .population(13254L)
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
+        Country country6 = Country.builder()
+                .countryId("66fcd4647feba23f124549f4")
+                .capital("Tirana")
+                .currencyCode("ALL")
+                .fipsCode("AL")
+                .countryIso2("AL")
+                .countryIso3("ALB")
+                .continent("EU")
+                .countryName("Albania")
+                .currencyName("Lek")
+                .countryIsoNumeric(8)
+                .phonePrefix("355")
+                .population(2986952L)
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
         List<Country> countries = List.of(country1, country2, country3, country4, country5, country6);
         countryRepo.saveAll(countries)
                 .forEach(country -> log.info("Saved initial country: {}", country));
@@ -62,7 +153,22 @@ class CountryRepoTest {
 
     @Test
     void testFindCountryById() {
-        Country expected = new Country("66fcd4647feba23f124549ef", "Andorra la Vella", "EUR", "AN", "AD", "AND", "EU", "Andorra", "Euro", "20", "376", 84000L);
+        Country expected = Country.builder()
+                .countryId("66fcd4647feba23f124549ef")
+                .capital("Andorra la Vella")
+                .currencyCode("EUR")
+                .fipsCode("AN")
+                .countryIso2("AD")
+                .countryIso3("AND")
+                .continent("EU")
+                .countryName("Andorra")
+                .currencyName("Euro")
+                .countryIsoNumeric(20)
+                .phonePrefix("376")
+                .population(84000L)
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
         Optional<Country> actual = countryRepo.findById("66fcd4647feba23f124549ef");
         assertThat(actual).isPresent();
         assertThat(actual.get())
