@@ -50,7 +50,7 @@ public class CountryDto implements Serializable {
     private String phonePrefix;
 
     @NotNull
-    @Positive
+    @Positive(message = "Population should be a valid number")
     private Long population;
 
     private LocalDateTime createdDate;

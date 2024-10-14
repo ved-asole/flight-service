@@ -2,6 +2,7 @@ package com.vedasole.flight_service.entity;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -58,7 +59,7 @@ public class Country {
 
     private String phonePrefix;
 
-    @Pattern(regexp = "^\\d+$", message = "Population should be a valid number")
+    @Positive(message = "Population should be a valid number")
     private Long population;
 
     @CreatedDate
