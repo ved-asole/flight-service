@@ -1,6 +1,5 @@
 package com.vedasole.flight_service.payload;
 
-import com.vedasole.flight_service.entity.Airline;
 import com.vedasole.flight_service.entity.enums.AirlineType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -37,8 +36,8 @@ public class AirlineDto implements Serializable {
     @Pattern(regexp = "[A-Z]{3}", message = "ICAO Code must be three uppercase letters")
     private String icaoCode;
 
-    private Airline.Country country;
-    private Airline.Fleet fleet;
+    private AirlineCountryDto country;
+    private FleetDto fleet;
     private String hubCode;
     private Integer founded;
 
@@ -59,7 +58,7 @@ public class AirlineDto implements Serializable {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Country implements Serializable {
+    public static class AirlineCountryDto implements Serializable {
         private String iso2;
         private String name;
     }
@@ -67,7 +66,7 @@ public class AirlineDto implements Serializable {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Fleet implements Serializable {
+    public static class FleetDto implements Serializable {
         private Double averageAge;
         private Integer size;
     }

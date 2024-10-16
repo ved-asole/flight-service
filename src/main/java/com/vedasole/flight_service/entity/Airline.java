@@ -14,7 +14,6 @@ import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -80,7 +79,7 @@ public class Airline {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Country implements Serializable {
+    public static class Country {
         private String iso2;
         private String name;
     }
@@ -88,7 +87,7 @@ public class Airline {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Fleet implements Serializable {
+    public static class Fleet {
         private Double averageAge;
         private Integer size;
     }
