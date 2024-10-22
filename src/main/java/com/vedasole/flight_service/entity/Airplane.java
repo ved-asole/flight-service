@@ -14,7 +14,6 @@ import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -135,7 +134,7 @@ public class Airplane {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class SeatingConfiguration implements Serializable {
+    public static class SeatingConfiguration {
         private int economyClassCapacity;
         private int businessClassCapacity;
         private int firstClassCapacity;
@@ -150,7 +149,7 @@ public class Airplane {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Engine implements Serializable {
+    public static class Engine {
         private Integer count;
         private String type;
     }
@@ -158,7 +157,7 @@ public class Airplane {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Model implements Serializable {
+    public static class Model {
         private String code;
         private String name;
         private String series;
@@ -168,7 +167,7 @@ public class Airplane {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Registration implements Serializable {
+    public static class Registration {
         private String number;
         private LocalDate date;
         private String testRegistrationNumber;

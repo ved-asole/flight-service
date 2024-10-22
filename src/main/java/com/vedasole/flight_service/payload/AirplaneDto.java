@@ -26,11 +26,11 @@ public class AirplaneDto {
     private String iataCodeShort;
     private String airlineIcaoCode;
     private LocalDate deliveryDate;
-    private Engine engines;
+    private EngineDto engines;
     private LocalDate firstFlightDate;
     private Model model;
     private String icaoCodeHex;
-    private Registration registration;
+    private RegistrationDto registration;
     private Integer planeAge;
     private String planeClass; // Class of the airplane (e.g., passenger, cargo)
     private String planeOwner;
@@ -40,7 +40,7 @@ public class AirplaneDto {
     private int totalCapacity;
     private AirplaneType aircraftType;
     private Double pricePerKm;
-    private SeatingConfiguration seatingConfiguration;
+    private SeatingConfigurationDto seatingConfiguration;
 
     @CreatedDate
     private LocalDateTime createdDate;
@@ -51,7 +51,7 @@ public class AirplaneDto {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class SeatingConfiguration implements Serializable {
+    public static class SeatingConfigurationDto implements Serializable {
         private int economyClassCapacity;
         private int businessClassCapacity;
         private int firstClassCapacity;
@@ -66,7 +66,7 @@ public class AirplaneDto {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Engine implements Serializable {
+    public static class EngineDto implements Serializable {
         private Integer count;
         private String type;
     }
@@ -84,7 +84,7 @@ public class AirplaneDto {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Registration implements Serializable {
+    public static class RegistrationDto implements Serializable {
         private String number;
         private LocalDate date;
         private String testRegistrationNumber;
