@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(
                 apiResponse,
-                HttpStatus.BAD_REQUEST
+                HttpStatus.NOT_FOUND
         );
     }
 
