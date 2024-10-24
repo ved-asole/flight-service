@@ -176,6 +176,7 @@ class CountryRepoTest {
                 .usingRecursiveComparison()
                 .ignoringFields("createdDate", "updatedDate")
                 .isEqualTo(expected);
+        assertThat(actual.get().getCreatedDate()).isNotNull().isInThePast();
         assertThat(actual.get().getUpdatedDate()).isNotNull().isInThePast();
     }
 
@@ -209,93 +210,93 @@ class CountryRepoTest {
         // Then
         assertThat(exists).isTrue();
     }
-    
+
     @Test
     void existsByCountryIso2_WithValidIso2Code_ReturnsTrue() {
         // Given
         String validIso2Code = "AD";
-    
+
         // When
         boolean exists = countryRepo.existsByCountryIso2(validIso2Code);
-    
+
         // Then
         assertThat(exists).isTrue();
     }
-    
+
     @Test
     void existsByCountryIso2_WithInvalidIso2Code_ReturnsFalse() {
         // Given
         String invalidIso2Code = "XX";
-    
+
         // When
         boolean exists = countryRepo.existsByCountryIso2(invalidIso2Code);
-    
+
         // Then
         assertThat(exists).isFalse();
     }
-    
+
     @Test
     void countByCountryIso2AndCountryIdNot_WithValidIso2CodeAndValidCountryId_ReturnsCorrectCount() {
         // Given
         String validIso2Code = "AD";
         String validCountryId = "66fcd4647feba23f124549ef";
-    
+
         // When
         long count = countryRepo.countByCountryIso2AndCountryIdNot(validIso2Code, validCountryId);
-    
+
         // Then
         assertThat(count).isZero();
     }
-    
+
     @Test
     void countByCountryIso2AndCountryIdNot_WithValidIso2CodeAndInvalidCountryId_ReturnsCorrectCount() {
         // Given
         String validIso2Code = "AD";
         String invalidCountryId = "wrong-id";
-    
+
         // When
         long count = countryRepo.countByCountryIso2AndCountryIdNot(validIso2Code, invalidCountryId);
-    
+
         // Then
         assertThat(count).isEqualTo(1);
     }
-    
+
     @Test
     void countByCountryIso2AndCountryIdNot_WithInvalidIso2CodeAndValidCountryId_ReturnsCorrectCount() {
         // Given
         String invalidIso2Code = "XX";
         String validCountryId = "66fcd4647feba23f124549ef";
-    
+
         // When
         long count = countryRepo.countByCountryIso2AndCountryIdNot(invalidIso2Code, validCountryId);
-    
+
         // Then
         assertThat(count).isZero();
     }
-    
+
     @Test
     void countByCountryIso2AndCountryIdNot_WithInvalidIso2CodeAndInvalidCountryId_ReturnsCorrectCount() {
         // Given
         String invalidIso2Code = "XX";
         String invalidCountryId = "wrong-id";
-    
+
         // When
         long count = countryRepo.countByCountryIso2AndCountryIdNot(invalidIso2Code, invalidCountryId);
-    
+
         // Then
         assertThat(count).isZero();
     }
-    
+
     @Test
     void save_WithCountryObjectWithNullCountryId_ShouldSaveSuccessfully() {
         // Given
         Country country = new Country();
         country.setCountryName("NewCountry");
         country.setCountryIso2("NC");
-    
+
         // When
         Country savedCountry = countryRepo.save(country);
-    
+
         // Then
         assertThat(savedCountry).isNotNull();
         assertThat(savedCountry.getCountryId()).isNotNull();
@@ -304,7 +305,7 @@ class CountryRepoTest {
         assertThat(savedCountry.getCreatedDate()).isNotNull().isInThePast();
         assertThat(savedCountry.getUpdatedDate()).isNotNull().isInThePast();
     }
-    
+
     @Test
     void save_WithCountryObjectWithExistingCountryName_ShouldThrowDataIntegrityViolationException() {
         // Given
@@ -314,15 +315,15 @@ class CountryRepoTest {
                 .countryName(existingCountry.getCountryName())
                 .countryIso2("NC")
                 .build();
-    
+
         // When
         Throwable exception = catchThrowable(() -> countryRepo.save(countryWithExistingName));
-    
+
         // Then
         assertThat(exception).isInstanceOf(DataIntegrityViolationException.class)
                 .hasMessageContaining("duplicate key error collection: crimsonSky-flights-db.countries index: idx_country_name dup key: { countryName: \"Antigua and Barbuda\" }");
     }
-    
+
     @Test
     void save_WithCountryObjectWithExistingCountryIso2_ShouldThrowDataIntegrityViolationException() {
         // Given
