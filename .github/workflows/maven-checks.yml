@@ -1,0 +1,29 @@
+name: Maven Checks
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.0.0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          java-version: '21'       # Specify Java version 21
+          distribution: 'temurin'  # Use Temurin distribution
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Verify the build
+        run: mvn verify
+
+      - name: Run tests
+        run: mvn test
