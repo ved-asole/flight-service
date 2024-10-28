@@ -16,8 +16,10 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4.0.0
         with:
-          java-version: '21'       # Specify Java version 21
-          distribution: 'temurin'  # Use Temurin distribution
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+          cache-dependency-path: '**/pom.xml'
 
       - name: Build with Maven
         run: mvn clean install
