@@ -1,13 +1,15 @@
 # CrimsonSky - Flight Service Microservice
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
+[![Maven Checks](https://github.com/ved-asole/flight-service/actions/workflows/maven-checks.yml/badge.svg)](https://github.com/ved-asole/flight-service/actions/workflows/maven-checks.yml)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
+
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_flight-service&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ved-asole_flight-service)
 ## Live Link / Demo Link: 🔗
 Access the flight service at **[localhost:8080](http://localhost:8080)**
 
