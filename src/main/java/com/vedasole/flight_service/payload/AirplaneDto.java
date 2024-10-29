@@ -38,7 +38,7 @@ public class AirplaneDto {
     private String planeStatus;
     private String productionLine;
     private int totalCapacity;
-    private AirplaneType aircraftType;
+    private AirplaneType airplaneType;
     private Double pricePerKm;
     private SeatingConfigurationDto seatingConfiguration;
 
