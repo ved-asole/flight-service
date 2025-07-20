@@ -1,8 +1,6 @@
 package com.vedasole.flight_service.entity;
 
 import com.vedasole.flight_service.entity.enums.AirlineType;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,33 +28,19 @@ public class Airline {
     private String airlineId;
 
     @Indexed(name = "idx_callsign")
-    @NotNull(message = "Callsign cannot be null")
     private String callsign;
 
     @Indexed(name = "idx_name")
-    @NotNull(message = "Name cannot be null")
     private String name;
 
-    @NotNull(message = "IATA Code cannot be null")
-    @Pattern(regexp = "[A-Z]{2}", message = "IATA Code must be two uppercase letters")
     private String iataCode;
-
-    @NotNull(message = "ICAO Code cannot be null")
-    @Pattern(regexp = "[A-Z]{3}", message = "ICAO Code must be three uppercase letters")
     private String icaoCode;
-
     private Country country;
     private Fleet fleet;
     private String hubCode;
     private Integer founded;
-
-    @NotNull(message = "Status cannot be null")
-    @Pattern(regexp = "active|inactive", message = "Status must be either 'active' or 'inactive'")
     private String status;
-
     private Set<AirlineType> type;
-
-
     private Double airlinePremium;
 
     @CreatedDate
