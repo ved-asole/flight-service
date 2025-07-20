@@ -13,7 +13,7 @@ import java.util.Optional;
 @EnableMongoRepositories
 public class MongoDBConfig {
     @Bean
-    public AuditorAware<String> yAuditorProvider() {
+    public AuditorAware<String> AuditorProvider() {
         return () -> Optional.of("test");
     }
 }
