@@ -56,10 +56,7 @@ public class AirlineServiceImpl implements AirlineService {
 
     @Override
     @Transactional
-    @Caching(evict = {
-            @CacheEvict(value = "airlines", key = "#airlineId"),
-            @CacheEvict(value = "airlines", allEntries = true)
-    })
+    @CacheEvict(value = "airlines", key = "#airlineId")
     public AirlineDto deleteAirline(String airlineId) {
         return airlineRepo.findById(airlineId).map(airline -> {
             airlineRepo.deleteById(airlineId);
