@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
@@ -37,11 +38,12 @@ public class AirlineServiceImpl implements AirlineService {
     @Override
     @Transactional
     @Caching(
-            evict = {
-                    @CacheEvict(value = "airlines", key = "#airlineId"),
-                    @CacheEvict(value = "airlines", allEntries = true)
+            put = {
+                    @CachePut(value = "airlines", key = "#airlineId")
             },
-            cacheable = {@Cacheable(value = "airlines", key = "#airlineId")}
+            evict = {
+                    @CacheEvict(value = "airlines", key = "#airlineId")
+            }
     )
     public AirlineDto updateAirline(String airlineId, AirlineDto airlineDto) {
         return airlineToDto(airlineRepo.findById(airlineId).map(airline -> {
