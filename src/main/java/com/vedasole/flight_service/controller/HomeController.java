@@ -1,4 +1,4 @@
-package com.vedasole.flight_service.contoller;
+package com.vedasole.flight_service.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;

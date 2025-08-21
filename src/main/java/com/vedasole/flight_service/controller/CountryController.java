@@ -1,4 +1,4 @@
-package com.vedasole.flight_service.contoller;
+package com.vedasole.flight_service.controller;
 
 import com.vedasole.flight_service.payload.CountryDto;
 import com.vedasole.flight_service.service.service_interface.CountryService;
