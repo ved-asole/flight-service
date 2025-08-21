@@ -14,8 +14,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CityDto {
 
+    @NotNull(message = "City ID cannot be null")
     private String cityId;
 
+    @Pattern(regexp = "^([+-]?\\d{1,2}(:\\d{2})?)$", message = "Invalid GMT format")
     private String gmt;
 
     @NotNull
@@ -26,15 +28,17 @@ public class CityDto {
     @Pattern(regexp = "^[A-Z]{2}$", message = "Invalid country code format")
     private String countryIso2;
 
-    @NotNull
+    @NotNull(message = "City name cannot be null")
+    @Size(min = 2, max = 100, message = "City name must be between 2 and 100 characters")
     private String cityName;
 
+    @NotNull(message = "Geoname ID cannot be null")
     private Long geonameId;
 
-    @NotNull
+    @NotNull(message = "Latitude ID cannot be null")
     private Double latitude;
 
-    @NotNull
+    @NotNull(message = "Longitude ID cannot be null")
     private Double longitude;
 
     private LocalDateTime createdDate;
