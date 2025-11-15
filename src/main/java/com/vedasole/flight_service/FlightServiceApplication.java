@@ -1,7 +1,6 @@
 package com.vedasole.flight_service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -20,13 +19,7 @@ import static org.springframework.data.web.config.EnableSpringDataWebSupport.Pag
 @EnableCaching
 public class FlightServiceApplication {
 
-	@Value("${spring.application.name:flight-service}")
-	private String appName;
-
-	@Value("${project.name:CrimsonSky}")
-	private String projectName;
-
-	Environment environment;
+    Environment environment;
 
 	public FlightServiceApplication(Environment environment) {
 		this.environment = environment;
@@ -39,7 +32,7 @@ public class FlightServiceApplication {
 	@EventListener(ApplicationReadyEvent.class)
 	public void onApplicationReady() {
 		log.info("FlightServiceApplication started \uD83D\uDE80");
-		log.info("Project name: {}, Application name: {}, Port:{}", projectName, appName, environment.getProperty("local.server.port"));
+        log.info("Project name: {}, Application name: {}, Port:{}", "CrimsonSky", environment.getProperty("spring.application.name"), environment.getProperty("local.server.port"));
 	}
 
 }
